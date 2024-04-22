@@ -42,7 +42,8 @@ public class User {
     @Size(groups = {createUser.class, updateUser.class} , min = 8, max = 60)
     private String password;
 
-//  private List<Task> tarefas = new ArrayList<Task>();
+    @OneToMany(mappedBy = "user")
+    private List<Task> tarefas = new ArrayList<Task>();
 
     public User(){}
 
@@ -74,6 +75,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Task> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<Task> tarefas) {
+        this.tarefas = tarefas;
     }
 
     @Override
